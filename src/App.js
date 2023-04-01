@@ -1,23 +1,23 @@
-import logo from './logo.svg';
 import './App.css';
+import {useState} from 'react';
+import {NavBar} from './MyComponents.js';
+import 'bootstrap/dist/css/bootstrap.min.css';
+
+import PageOne from './pages/One.js';
+import PageTwo from './pages/Two';
+import PageThree from './pages/Three';
 
 function App() {
+
+  const [page, setPage] = useState(1);
+  const [count, setCount] = useState(0);
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <NavBar page={page} setPage={setPage}/>
+      <PageOne page={page}/>
+      <PageTwo count={count} setCount={setCount} page={page}/>
+      <PageThree count={count} setCount={setCount} page={page}/>      
     </div>
   );
 }
